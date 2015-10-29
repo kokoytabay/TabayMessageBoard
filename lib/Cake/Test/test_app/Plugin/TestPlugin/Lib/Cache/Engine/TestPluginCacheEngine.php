@@ -43,7 +43,4 @@ class TestPluginCacheEngine extends CacheEngine {
 
 	public function clearGroup($group) {
 	}
-
-	public function add($key, $value, $duration) {
-	}
 }

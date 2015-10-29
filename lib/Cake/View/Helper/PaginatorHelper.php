@@ -351,7 +351,7 @@ class PaginatorHelper extends AppHelper {
 
 			$title = __(Inflector::humanize(preg_replace('/_id$/', '', $title)));
 		}
-		$defaultDir = isset($options['direction']) ? strtolower($options['direction']) : 'asc';
+		$defaultDir = isset($options['direction']) ? $options['direction'] : 'asc';
 		unset($options['direction']);
 
 		$locked = isset($options['lock']) ? $options['lock'] : false;
@@ -980,26 +980,25 @@ class PaginatorHelper extends AppHelper {
  * ### Options:
  *
  * - `model` The model to use defaults to PaginatorHelper::defaultModel()
- * - `block` The block name to append the output to, or false/absent to return as a string
+ * - `block` The block name to append the output to, or false/absenst to return as a string
  *
- * @param array $options Array of options.
- * @return string|null Meta links.
+ * @param array $options Array of options
+ * @return string|void Meta links
  */
 	public function meta($options = array()) {
 		$model = isset($options['model']) ? $options['model'] : null;
 		$params = $this->params($model);
-		$urlOptions = isset($this->options['url']) ? $this->options['url'] : array();
 		$links = array();
 		if ($this->hasPrev()) {
 			$links[] = $this->Html->meta(array(
 				'rel' => 'prev',
-				'link' => $this->url(array_merge($urlOptions, array('page' => $params['page'] - 1)), true)
+				'link' => $this->url(array('page' => $params['page'] - 1), true)
 			));
 		}
 		if ($this->hasNext()) {
 			$links[] = $this->Html->meta(array(
 				'rel' => 'next',
-				'link' => $this->url(array_merge($urlOptions, array('page' => $params['page'] + 1)), true)
+				'link' => $this->url(array('page' => $params['page'] + 1), true)
 			));
 		}
 		$out = implode($links);

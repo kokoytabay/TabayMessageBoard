@@ -739,9 +739,9 @@ class DboSource extends DataSource {
 /**
  * Returns a single field of the first of query results for a given SQL query, or false if empty.
  *
- * @param string $name The name of the field to get.
- * @param string $sql The SQL query.
- * @return mixed Value of field read, or false if not found.
+ * @param string $name Name of the field
+ * @param string $sql SQL query
+ * @return mixed Value of field read.
  */
 	public function field($name, $sql) {
 		$data = $this->fetchRow($sql);
@@ -1562,7 +1562,6 @@ class DboSource extends DataSource {
 					}
 				} else {
 					if (is_array($merge[0][$association])) {
-						$mergeAssocTmp = array();
 						foreach ($dataAssociation as $k => $v) {
 							if (!is_array($v)) {
 								$dataAssocTmp[$k] = $v;
@@ -3210,7 +3209,7 @@ class DboSource extends DataSource {
  *
  * @param string $table The name of the table to update.
  * @param string $column The column to use when resetting the sequence value.
- * @return bool Success.
+ * @return bool|void success.
  */
 	public function resetSequence($table, $column) {
 	}

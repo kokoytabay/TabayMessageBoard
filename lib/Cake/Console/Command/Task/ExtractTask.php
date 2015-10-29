@@ -316,10 +316,6 @@ class ExtractTask extends AppShell {
 		))->addOption('merge', array(
 			'help' => __d('cake_console', 'Merge all domain and category strings into the default.po file.'),
 			'choices' => array('yes', 'no')
-		))->addOption('no-location', array(
-			'boolean' => true,
-			'default' => false,
-			'help' => __d('cake_console', 'Do not write lines with locations'),
 		))->addOption('output', array(
 			'help' => __d('cake_console', 'Full path to output directory.')
 		))->addOption('files', array(
@@ -576,17 +572,14 @@ class ExtractTask extends AppShell {
 				foreach ($translations as $msgid => $contexts) {
 					foreach ($contexts as $context => $details) {
 						$plural = $details['msgid_plural'];
-						$header = '';
-						if (empty($this->params['no-location'])) {
-							$files = $details['references'];
-							$occurrences = array();
-							foreach ($files as $file => $lines) {
-								$lines = array_unique($lines);
-								$occurrences[] = $file . ':' . implode(';', $lines);
-							}
-							$occurrences = implode("\n#: ", $occurrences);
-							$header = '#: ' . str_replace(DS, '/', str_replace($paths, '', $occurrences)) . "\n";
+						$files = $details['references'];
+						$occurrences = array();
+						foreach ($files as $file => $lines) {
+							$lines = array_unique($lines);
+							$occurrences[] = $file . ':' . implode(';', $lines);
 						}
+						$occurrences = implode("\n#: ", $occurrences);
+						$header = '#: ' . str_replace(DS, '/', str_replace($paths, '', $occurrences)) . "\n";
 
 						$sentence = '';
 						if ($context) {

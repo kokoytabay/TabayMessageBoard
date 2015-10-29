@@ -212,7 +212,7 @@ class PaginatorHelperTest extends CakeTestCase {
 
 		$this->Paginator->request->params['paging']['Article']['options']['order'] = array('Article.title' => 'desc');
 		$this->Paginator->request->params['paging']['Article']['options']['sort'] = null;
-		$result = $this->Paginator->sort('title', 'Title', array('direction' => 'ASC'));
+		$result = $this->Paginator->sort('title', 'Title', array('direction' => 'asc'));
 		$this->assertRegExp('/\/accounts\/index\/param\/sort:title\/direction:asc" class="desc">Title<\/a>$/', $result);
 
 		$this->Paginator->request->params['paging']['Article']['options']['order'] = array('Article.title' => 'asc');
@@ -2923,31 +2923,6 @@ class PaginatorHelperTest extends CakeTestCase {
 		);
 		$expected = '<link href="/?page=4" rel="prev"/>';
 		$expected .= '<link href="/?page=6" rel="next"/>';
-		$result = $this->Paginator->meta();
-		$this->assertSame($expected, $result);
-	}
-
-/**
- * Verify that meta() uses URL options
- *
- * @return void
- */
-	public function testMetaPageUrlOptions() {
-		$this->Paginator->options(array(
-			'url' => array('?' => array('a' => 'b'))
-		));
-		$this->Paginator->request['paging'] = array(
-			'Article' => array(
-				'page' => 5,
-				'prevPage' => true,
-				'nextPage' => true,
-				'pageCount' => 10,
-				'options' => array(),
-				'paramType' => 'querystring'
-			)
-		);
-		$expected = '<link href="/?a=b&amp;page=4" rel="prev"/>';
-		$expected .= '<link href="/?a=b&amp;page=6" rel="next"/>';
 		$result = $this->Paginator->meta();
 		$this->assertSame($expected, $result);
 	}
