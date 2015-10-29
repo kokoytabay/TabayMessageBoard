@@ -1,0 +1,35 @@
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+#header h1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#header nav ul {
+	list-style: none;
+}
+
+#header li {
+	display: inline;
+}
+
+div.form, div.index, div.view {
+    float: none;
+    width: auto;
+    border-left: 0;
+}
