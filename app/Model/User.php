@@ -14,9 +14,8 @@ class User extends AppModel {
  */
 	public $validate = array(
 		'name' => array(
-			'required' => array(
+			'notBlank' => array(
 				'rule' => 'notBlank',
-				'required' => true,
 				'message' => 'A name is required'
 			),
 			'between' => array(
@@ -25,9 +24,8 @@ class User extends AppModel {
 			)
 		),
 		'email' => array(
-			'required' => array(
+			'notBlank' => array(
 				'rule' => 'notBlank',
-				'required' => 'create',
 				'message' => 'An email is required'
 			),
 			'email' => array(
@@ -40,14 +38,14 @@ class User extends AppModel {
 			)
 		),
 		'password' => array(
-			'rule' => 'notBlank',
-			'required' => 'create',
-			'message' => 'A password is required'
+			'notBlank' => array(
+				'rule' => 'notBlank',
+				'message' => 'A password is required'
+			),
 		),
 		'confirm_password' => array(
-			'required' => array(
+			'notBlank' => array(
 				'rule' => 'notBlank',
-				'required' => 'create',
 				'message' => 'Confirm password is required'
 			),
 			'compare' => array(
@@ -57,9 +55,14 @@ class User extends AppModel {
 		),
 		'birthdate' => array(
 			'rule' => array('date', 'ymd'),
-			'message' => 'Please enter a valid date in YYYY-MM-DD format',
+			'message' => 'Please enter a valid date for birthdate in YYYY-MM-DD format',
 			'allowEmpty' => true
 		)
+	);
+
+	public $genderOptions = array(
+		'1' => 'Male', 
+		'2' => 'Female'
 	);
 
 	public function validatePasswords() {
@@ -69,9 +72,7 @@ class User extends AppModel {
 	public function beforeSave($options = array()) {
 	    if (isset($this->data[$this->alias]['password'])) {
 	        $passwordHasher = new BlowfishPasswordHasher();
-	        $this->data[$this->alias]['password'] = $passwordHasher->hash(
-	            $this->data[$this->alias]['password']
-	        );
+	        $this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
 	    }
 	    return true;
 	}

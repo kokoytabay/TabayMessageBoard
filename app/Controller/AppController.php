@@ -55,4 +55,17 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
     }
+
+    public function beforeRender() {
+        $isLoggedIn = $this->Auth->loggedIn();
+        $this->set('isLoggedIn', $isLoggedIn);
+        if ($isLoggedIn) {
+            $authUserId = $this->Auth->user('id');
+            $this->set('authUserId', $authUserId);
+            $this->loadModel('User');
+            $options = array('conditions' => array('User.' . $this->User->primaryKey => $authUserId));
+            $data = $this->User->find('first', $options);
+            $this->set('authUserName', $data['User']['name']);
+        }
+    }
 }

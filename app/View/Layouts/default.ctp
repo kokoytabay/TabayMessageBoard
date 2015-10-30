@@ -14,7 +14,6 @@
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
-		echo $this->fetch('script');
 	?>
 </head>
 <body>
@@ -24,7 +23,7 @@
 
 			<nav class="float-right">
 				<ul>
-					<?php if($this->request->params['controller'] != 'users' || $this->request->params['action'] != 'add'): ?>
+					<?php if(!$isLoggedIn && ($this->request->params['controller'] != 'users' || $this->request->params['action'] != 'add')): ?>
 					<li>
 					<?php
 						echo $this->Html->link(
@@ -32,6 +31,54 @@
 						    array(
 						        'controller' => 'users',
 						        'action' => 'add'
+						    )
+						);
+					?>
+					</li>
+					<?php elseif($isLoggedIn): ?>
+					<li>Hi, <?php echo $authUserName; ?>!</li>
+					<li>
+					<?php
+						echo $this->Html->link(
+						    'Messages',
+						    array(
+						        'controller' => 'messages',
+						        'action' => 'index'
+						    )
+						);
+					?>
+					</li>
+					<li>
+					<?php
+						echo $this->Html->link(
+						    'View Profile',
+						    array(
+						        'controller' => 'users',
+						        'action' => 'view',
+						        $authUserId
+						    )
+						);
+					?>
+					</li>
+					<li>
+					<?php
+						echo $this->Html->link(
+						    'Update Profile',
+						    array(
+						        'controller' => 'users',
+						        'action' => 'edit',
+						        $authUserId
+						    )
+						);
+					?>
+					</li>
+					<li>
+					<?php
+						echo $this->Html->link(
+						    'Logout',
+						    array(
+						        'controller' => 'users',
+						        'action' => 'logout'
 						    )
 						);
 					?>
@@ -46,5 +93,7 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
+
+	<?php echo $this->fetch('script'); ?>
 </body>
 </html>

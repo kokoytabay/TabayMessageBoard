@@ -33,3 +33,15 @@ div.form, div.index, div.view {
     width: auto;
     border-left: 0;
 }
+
+.profile-view {
+	width: 60%;
+}
+
+.profile-view div {
+	margin-left: 20px;
+}
+
+.profile-view div:first-child {
+	margin-left: 0;
+}

@@ -1,79 +1,28 @@
+<?php $this->assign('title', 'View Profile'); ?>
+
 <div class="users view">
-<h2><?php echo __('User'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Image'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['image']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Gender'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['gender']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Birthdate'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['birthdate']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Hobby'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['hobby']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Login Time'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['last_login_time']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['modified']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created Ip'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['created_ip']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified Ip'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['modified_ip']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $user['User']['id']))); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
-	</ul>
+	<div class="profile-view clearfix">
+		<div class="float-left">
+		<?php 
+			$avatar = (!empty($user['User']['image'])) ? $user['User']['image'] : 'default-avatar.png';
+			echo $this->Html->image($avatar); 
+		?>
+		</div>
+
+		<div class="float-left">
+			<h2><?php echo h($user['User']['name']); ?></h2>
+			<p><?php echo __('Email'); ?>: <?php echo h($user['User']['email']); ?></p>
+			<p><?php echo __('Gender'); ?>: <?php echo $genderOptions[$user['User']['gender']]; ?></p>
+			<p><?php echo __('Birthdate'); ?>: <?php echo $this->Time->format($user['User']['birthdate'], '%B %e, %Y'); ?></p>
+			<p><?php echo __('Joined'); ?>: <?php echo $this->Time->format($user['User']['created'], '%B %e, %Y %I:%M %p'); ?></p>
+			<p><?php echo __('Joined IP'); ?>: <?php echo h($user['User']['created_ip']); ?></p>
+			<p><?php echo __('Modified'); ?>: <?php echo $this->Time->format($user['User']['modified'], '%B %e, %Y %I:%M %p'); ?></p>
+			<p><?php echo __('Modified IP'); ?>: <?php echo h($user['User']['modified_ip']); ?></p>
+			<p><?php echo __('Last Login'); ?>: <?php echo $this->Time->format($user['User']['created'], '%B %e, %Y %I:%M %p'); ?></p>
+		</div>
+	</div>
+
+	<p><?php echo __('Hobby'); ?>:</p>
+
+	<p><?php echo nl2br($user['User']['hobby']); ?></p>
 </div>
