@@ -2,7 +2,6 @@
 #################################################
 /app/Config/database.php
 /app/tmp
-/app/webroot/img/avatars/
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors
