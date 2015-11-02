@@ -6,7 +6,6 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('to_id');
 		echo $this->Form->input('from_id');
-		echo $this->Form->input('content');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

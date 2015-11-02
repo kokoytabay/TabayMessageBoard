@@ -6,19 +6,14 @@
 			<?php echo h($message['Message']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('To Id'); ?></dt>
+		<dt><?php echo __('Message To'); ?></dt>
 		<dd>
-			<?php echo h($message['Message']['to_id']); ?>
+			<?php echo $this->Html->link($message['MessageTo']['name'], array('controller' => 'users', 'action' => 'view', $message['MessageTo']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('From Id'); ?></dt>
+		<dt><?php echo __('Message From'); ?></dt>
 		<dd>
-			<?php echo h($message['Message']['from_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Content'); ?></dt>
-		<dd>
-			<?php echo h($message['Message']['content']); ?>
+			<?php echo $this->Html->link($message['MessageFrom']['name'], array('controller' => 'users', 'action' => 'view', $message['MessageFrom']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>

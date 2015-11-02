@@ -27,7 +27,13 @@
 	<div id="image-preview"></div>
 	<fieldset>
 	<?php
-		echo $this->Form->input('avatar', array('type' => 'file', 'label' => 'Upload Photo', 'error' => false));
+		echo $this->Form->input('avatar', 
+			array(
+				'type' => 'file', 
+				'label' => 'Upload Photo', 
+				'error' => false
+			)
+		);
 		echo $this->Form->input('name', array('error' => false));
 		echo $this->Form->input('email', array('error' => false));
 		echo $this->Form->input('gender', 

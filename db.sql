@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2015 at 03:36 AM
+-- Generation Time: Nov 02, 2015 at 02:09 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,10 +30,27 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto',
   `to_id` int(11) NOT NULL,
   `from_id` int(11) NOT NULL,
-  `content` text NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message_contents`
+--
+
+CREATE TABLE IF NOT EXISTS `message_contents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto',
+  `message_id` int(11) NOT NULL,
+  `from_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `message_id_index` (`message_id`),
+  KEY `from_id_index` (`from_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -58,7 +75,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified_ip` varchar(20) NOT NULL COMMENT 'user ip address',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `message_contents`
+--
+ALTER TABLE `message_contents`
+  ADD CONSTRAINT `fk_from_id` FOREIGN KEY (`from_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `fk_message_id` FOREIGN KEY (`message_id`) REFERENCES `messages` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

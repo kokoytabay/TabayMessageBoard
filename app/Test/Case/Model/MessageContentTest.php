@@ -1,10 +1,10 @@
 <?php
-App::uses('Message', 'Model');
+App::uses('MessageContent', 'Model');
 
 /**
- * Message Test Case
+ * MessageContent Test Case
  */
-class MessageTest extends CakeTestCase {
+class MessageContentTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -12,10 +12,9 @@ class MessageTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'app.message_content',
 		'app.message',
-		'app.to',
-		'app.from',
-		'app.message_content'
+		'app.from'
 	);
 
 /**
@@ -25,7 +24,7 @@ class MessageTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Message = ClassRegistry::init('Message');
+		$this->MessageContent = ClassRegistry::init('MessageContent');
 	}
 
 /**
@@ -34,7 +33,7 @@ class MessageTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Message);
+		unset($this->MessageContent);
 
 		parent::tearDown();
 	}

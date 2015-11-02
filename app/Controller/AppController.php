@@ -48,13 +48,9 @@ class AppController extends Controller {
                     'passwordHasher' => 'Blowfish',
                     'fields' => array('username' => 'email')
                 )
-            )
+            ),
         )
     );
-
-    public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
-    }
 
     public function beforeRender() {
         $isLoggedIn = $this->Auth->loggedIn();

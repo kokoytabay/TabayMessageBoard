@@ -1,46 +1,45 @@
+<?php $this->start('script'); ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<?php echo $this->Html->script('jquery.jscroll.min.js'); ?>
+	<?php echo $this->Html->script('script.js'); ?>
+<?php $this->end(); ?>
+
 <div class="messages index">
-	<h2><?php echo __('Messages'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('to_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('from_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('content'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($messages as $message): ?>
-	<tr>
-		<td><?php echo h($message['Message']['id']); ?>&nbsp;</td>
-		<td><?php echo h($message['Message']['to_id']); ?>&nbsp;</td>
-		<td><?php echo h($message['Message']['from_id']); ?>&nbsp;</td>
-		<td><?php echo h($message['Message']['content']); ?>&nbsp;</td>
-		<td><?php echo h($message['Message']['created']); ?>&nbsp;</td>
-		<td><?php echo h($message['Message']['modified']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $message['Message']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $message['Message']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $message['Message']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $message['Message']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
+	<p class="actions">
+		<?php echo $this->Html->link(__('New Message'), array('controller' => 'messages', 'action' => 'add')); ?>
+	</p>
+
+	<div class="messages-list">
+		<?php foreach ($messages as $message): ?>
+		<table cellpadding="0" cellspacing="0" with="100%">
+			<?php 
+				$latestMessageContent = count($message['MessageContent']) - 1;
+			?>
+			<tr>
+				<td rowspan="2" class="messages-avatar">
+					<?php 
+						$avatar = (!empty($message['MessageFrom']['image'])) ? $message['MessageFrom']['image'] : 'default-avatar.png';
+						echo $this->Html->image($avatar); 
+					?>
+				</td>
+				<td><?php echo nl2br($message['MessageContent'][$latestMessageContent]['content']); ?></td>
+				<td rowspan="2" class="messages-list-actions actions">
+					<?php echo $this->Html->link(__('View'), array('action' => 'view', $message['Message']['id'])); ?>
+					<?php if($message['Message']['from_id'] == $authUserId): ?>
+						<br /><br />
+						<a href="<?php echo $this->Html->url(array('action' => 'delete', $message['Message']['id'])); ?>" class="delete">Delete</a>
+					<?php endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="align-right"><?php echo $this->Time->format($message['MessageContent'][$latestMessageContent]['created'], '%B %e, %Y %I:%M %p'); ?></td>
+			</tr>
+		</table>	
+		<?php endforeach; ?>
+		<div class="align-center">
+		<?php
+			echo $this->Paginator->next('Show More', array(), null, array('class' => 'next disabled'));
+		?>
+		</div>
 	</div>
 </div>

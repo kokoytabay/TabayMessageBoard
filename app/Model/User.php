@@ -60,6 +60,53 @@ class User extends AppModel {
 		)
 	);
 
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'MessageRecipient' => array(
+			'className' => 'Message',
+			'foreignKey' => 'to_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'MessageSender' => array(
+			'className' => 'Message',
+			'foreignKey' => 'from_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'MessageContentUser' => array(
+			'className' => 'MessageContent',
+			'foreignKey' => 'from_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 	public $genderOptions = array(
 		'1' => 'Male', 
 		'2' => 'Female'

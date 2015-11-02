@@ -45,3 +45,37 @@ div.form, div.index, div.view {
 .profile-view div:first-child {
 	margin-left: 0;
 }
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.messages table {
+	border-collapse: collapse;
+}
+
+.messages table tr td {
+	border: 1px solid #DDD;
+}
+
+.messages table tr:nth-child(2n) {
+    background: none;
+    height: 20px;
+}
+
+.messages-avatar {
+	width: 128px;
+}
+
+.messages-list-actions {
+	vertical-align: middle;
+	width: 90px;
+}
+
+.messages-list .disabled {
+	display: none;
+}

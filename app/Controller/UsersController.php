@@ -96,6 +96,8 @@ class UsersController extends AppController {
 	public function edit($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
+		} elseif ($id != $this->Auth->user('id')) {
+			return $this->redirect(array('controller' => 'messages', 'action' => 'index'));
 		}
 		$imageErrors = array();
 		if ($this->request->is(array('post', 'put'))) {

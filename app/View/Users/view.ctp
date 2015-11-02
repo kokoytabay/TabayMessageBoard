@@ -12,7 +12,7 @@
 		<div class="float-left">
 			<h2><?php echo h($user['User']['name']); ?></h2>
 			<p><?php echo __('Email'); ?>: <?php echo h($user['User']['email']); ?></p>
-			<p><?php echo __('Gender'); ?>: <?php echo $genderOptions[$user['User']['gender']]; ?></p>
+			<p><?php echo __('Gender'); ?>: <?php echo (!empty($user['User']['gender'])) ? $genderOptions[$user['User']['gender']] : ''; ?></p>
 			<p><?php echo __('Birthdate'); ?>: <?php echo $this->Time->format($user['User']['birthdate'], '%B %e, %Y'); ?></p>
 			<p><?php echo __('Joined'); ?>: <?php echo $this->Time->format($user['User']['created'], '%B %e, %Y %I:%M %p'); ?></p>
 			<p><?php echo __('Joined IP'); ?>: <?php echo h($user['User']['created_ip']); ?></p>
