@@ -18,7 +18,7 @@
 			<p><?php echo __('Joined IP'); ?>: <?php echo h($user['User']['created_ip']); ?></p>
 			<p><?php echo __('Modified'); ?>: <?php echo $this->Time->format($user['User']['modified'], '%B %e, %Y %I:%M %p'); ?></p>
 			<p><?php echo __('Modified IP'); ?>: <?php echo h($user['User']['modified_ip']); ?></p>
-			<p><?php echo __('Last Login'); ?>: <?php echo $this->Time->format($user['User']['created'], '%B %e, %Y %I:%M %p'); ?></p>
+			<p><?php echo __('Last Login'); ?>: <?php echo $this->Time->format($user['User']['last_login_time'], '%B %e, %Y %I:%M %p'); ?></p>
 		</div>
 	</div>
 
