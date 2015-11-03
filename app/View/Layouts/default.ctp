@@ -75,6 +75,18 @@
 					<li>
 					<?php
 						echo $this->Html->link(
+						    'Change Password',
+						    array(
+						        'controller' => 'users',
+						        'action' => 'changepassword',
+						        $authUserId
+						    )
+						);
+					?>
+					</li>
+					<li>
+					<?php
+						echo $this->Html->link(
 						    'Logout',
 						    array(
 						        'controller' => 'users',

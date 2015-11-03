@@ -137,6 +137,22 @@ class UsersController extends AppController {
 		$this->set('genderOptions', $this->User->genderOptions);
 	}
 
+	public function changepassword($id = null) {
+		if (!$this->User->exists($id)) {
+			throw new NotFoundException(__('Invalid user'));
+		} elseif ($id != $this->Auth->user('id')) {
+			return $this->redirect(array('controller' => 'messages', 'action' => 'index'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			$this->request->data['User']['id'] = $id;
+			$this->request->data['User']['modified_ip'] = $this->request->clientIp();
+
+			if ($this->User->save($this->request->data)) {
+				$this->Flash->success(__('The password has been saved.'));
+			}
+		}
+	}
+
 /**
  * delete method
  *

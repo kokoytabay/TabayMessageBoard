@@ -31,22 +31,72 @@ $(document).ready(function(){
 	}
 
 	if ($('.delete').length) {
-		$('.delete').click(function(event){
+		$(document).on('click', '.delete', function(event){
 			event.preventDefault();
 
 			var that = $(this);
 			var url = that.attr('href');
-			var parent_table = 	that.closest('table');
+			var parentTable = that.closest('table');
 			if (confirm('Are you sure you want to delete?')) {
 				$.ajax({
 					url: url,
-					beforeSend: function() {
-						parent_table.html('<tr><td class="align-center">Loading...</td></tr>');
+					beforeSend: function(){
+						parentTable.html('<tr><td class="align-center">Loading...</td></tr>');
 					}
-				}).done(function(){
-					parent_table.fadeOut('slow', function(){
-						parent_table.remove();
+				}).done(function(response){
+					parentTable.fadeOut('slow', function(){
+						parentTable.remove();
+
+						if (response == 'redirect') {
+							window.location = '../../messages';
+						}
 					});
+				});
+			}
+		});
+	}
+
+	if ($('#MessageContentViewForm').length) {
+		$('#MessageContentViewForm').submit(function(event){
+			event.preventDefault();
+
+			var that = $(this);
+			var url = that.attr('action');
+			var data = that.serialize();
+			var loadingReply = $('#loading-reply');
+			$.ajax({
+				url: url,
+				method: 'POST',
+				data: data,
+				beforeSend: function(){
+					loadingReply.html('Loading...');
+				}
+			}).done(function(html){
+				$(html).prependTo('.messages-list:first').hide().fadeIn('slow', function(){
+					loadingReply.html('');
+				});
+			});
+		});
+	}
+
+	if ($('#search-form').length) {
+		$('#search-form').submit(function(event){
+			event.preventDefault();
+
+			var that = $(this);
+			var url = that.attr('action');
+			var data = that.serialize();
+			var firstMessagesList = $('.messages-list:first');
+			if ($('#search').val() != '') {
+				$.ajax({
+					url: url,
+					method: 'GET',
+					data: data,
+					beforeSend: function(){
+						firstMessagesList.html('<div class="align-center">Loading...</div>');
+					}
+				}).done(function(html){
+					firstMessagesList.html(html).hide().fadeIn('slow');
 				});
 			}
 		});

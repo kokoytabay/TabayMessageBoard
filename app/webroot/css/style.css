@@ -79,3 +79,16 @@ div.form, div.index, div.view {
 .messages-list .disabled {
 	display: none;
 }
+
+.search-container {
+	width: 40%;
+	margin-bottom: 10px;
+}
+
+.search {
+	text-align: right;
+}
+
+.search input[type="text"] {
+	width: 40%;
+}
