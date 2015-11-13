@@ -64,18 +64,20 @@ $(document).ready(function(){
 			var url = that.attr('action');
 			var data = that.serialize();
 			var loadingReply = $('#loading-reply');
-			$.ajax({
-				url: url,
-				method: 'POST',
-				data: data,
-				beforeSend: function(){
-					loadingReply.html('Loading...');
-				}
-			}).done(function(html){
-				$(html).prependTo('.messages-list:first').hide().fadeIn('slow', function(){
-					loadingReply.html('');
+			if ($('#MessageContentContent').val() != '') {
+				$.ajax({
+					url: url,
+					method: 'POST',
+					data: data,
+					beforeSend: function(){
+						loadingReply.html('Loading...');
+					}
+				}).done(function(html){
+					$(html).prependTo('.messages-list:first').hide().fadeIn('slow', function(){
+						loadingReply.html('');
+					});
 				});
-			});
+			}
 		});
 	}
 
