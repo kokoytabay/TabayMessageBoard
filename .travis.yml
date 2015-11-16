@@ -6,29 +6,7 @@ php:
 script: 
   - chmod 777 ./lib/Cake/Console/cake
   - sh -c "mysql -e 'CREATE DATABASE test_database;'"
-  - echo "<?php
-    class DATABASE_CONFIG {
-
-    public \$default = array(
-      'datasource' => 'Database/Mysql',
-      'persistent' => false,
-      'host' => 'localhost',
-      'login' => 'travis',
-      'password' => '',
-      'database' => 'test_database',
-      'prefix' => ''
-    );
-
-    public \$test = array(
-      'datasource' => 'Database/Mysql',
-      'persistent' => false,
-      'host' => 'localhost',
-      'login' => 'travis',
-      'password' => '',
-      'database' => 'test_database',
-      'prefix' => ''
-    );
-  }" > app/Config/database.php
+  - echo "<?php class DATABASE_CONFIG { public \$default = array('datasource' => 'Database/Mysql','persistent' => false,'host' => 'localhost','login' => 'travis','password' => '','database' => 'test_database','prefix' => ''); public \$test = array('datasource' => 'Database/Mysql','persistent' => false,'host' => 'localhost','login' => 'travis','password' => '','database' => 'test_database','prefix' => ''); }" > app/Config/database.php
   - sh -c "./lib/Cake/Console/cake test app Controller/UsersController"
   - sh -c "./lib/Cake/Console/cake test app Controller/MessagesController"
 notifications:
