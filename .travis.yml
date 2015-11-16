@@ -4,7 +4,8 @@ php:
   - 5.5
   - 5.4
 script: 
-  - sh -c "sudo ./lib/Cake/Console/cake test app Controller/UsersController"
-  - sh -c "sudo ./lib/Cake/Console/cake test app Controller/MessagesController"
+  - chmod 777 ./lib/Cake/Console/cake
+  - sh -c "./lib/Cake/Console/cake test app Controller/UsersController"
+  - sh -c "./lib/Cake/Console/cake test app Controller/MessagesController"
 notifications:
   email: false
