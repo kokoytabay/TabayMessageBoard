@@ -3,10 +3,9 @@ php:
   - 5.3
   - 5.5
   - 5.4
-sudo: required  
 script: 
-  - sudo lib/Cake/Console/cake test app Controller/UsersController
-  - sudo lib/Cake/Console/cake test app Controller/MessagesController
+  - ./lib/Cake/Console/cake test app Controller/UsersController
+  - ./lib/Cake/Console/cake test app Controller/MessagesController
 
 notifications:
   email: false
