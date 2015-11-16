@@ -1,8 +1,9 @@
 language: php
 php:
+  - 5.3
   - 5.5
   - 5.4
-  - hhvm
+sudo: required  
 script: 
   - sudo lib/Cake/Console/cake test app Controller/UsersController
   - sudo lib/Cake/Console/cake test app Controller/MessagesController
