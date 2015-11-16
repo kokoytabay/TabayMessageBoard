@@ -4,8 +4,8 @@ php:
   - 5.4
   - hhvm
 script: 
-  - lib/Cake/Console/cake test app Controller/UsersController
-  - lib/Cake/Console/cake test app Controller/MessagesController
+  - sudo lib/Cake/Console/cake test app Controller/UsersController
+  - sudo lib/Cake/Console/cake test app Controller/MessagesController
 
 notifications:
   email: false
