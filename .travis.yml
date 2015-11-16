@@ -24,8 +24,6 @@ matrix:
     - php: 5.4
       env: PHPCS=1
 
-sudo: required
-
 before_script:
   - sh -c "composer global require 'phpunit/phpunit=3.7.33'"
   - sh -c "ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit ./vendors/PHPUnit"
