@@ -6,6 +6,5 @@ php:
 script: 
   - ./lib/Cake/Console/cake test app Controller/UsersController
   - ./lib/Cake/Console/cake test app Controller/MessagesController
-
 notifications:
   email: false
