@@ -44,7 +44,7 @@ class UsersControllerTest extends ControllerTestCase {
 		$data = array(
 			'User' => array(
 				'name' => 'John Doe',
-				'email' => 'test@testing.com',
+				'email' => 'john@testing.com',
 				'password' => 'test',
 				'confirm_password' => 'test'
 			)
