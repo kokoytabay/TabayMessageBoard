@@ -40,9 +40,9 @@ class MessagesControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	/*public function testAdd() {
-		$this->markTestIncomplete('testAdd not implemented.');
-	}*/
+	public function testAdd() {
+		$this->testAction('/messages/add', array('method' => 'get'));
+	}
 
 /**
  * testEdit method
