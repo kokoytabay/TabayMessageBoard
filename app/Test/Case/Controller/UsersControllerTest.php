@@ -45,8 +45,8 @@ class UsersControllerTest extends ControllerTestCase {
 			'User' => array(
 				'name' => 'John Doe',
 				'email' => 'john@testing.com',
-				'password' => 'testing',
-				'confirm_password' => 'testing'
+				'password' => 'test',
+				'confirm_password' => 'test'
 			)
 		);
 		$this->testAction(
