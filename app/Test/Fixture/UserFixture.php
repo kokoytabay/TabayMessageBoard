@@ -51,6 +51,21 @@ class UserFixture extends CakeTestFixture {
 			'created_ip' => '127.0.0.1',
 			'modified_ip' => '127.0.0.1'
 		),
+		array(
+			'id' => 2,
+			'name' => 'Tony Sample',
+			'email' => 'tony@testing.com',
+			'password' => 'Lorem ipsum dolor sit amet',
+			'image' => '',
+			'gender' => '',
+			'birthdate' => '1980-10-29',
+			'hobby' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+			'last_login_time' => '2015-10-29 04:59:26',
+			'created' => '2015-10-29 04:59:26',
+			'modified' => '2015-10-29 04:59:26',
+			'created_ip' => '127.0.0.1',
+			'modified_ip' => '127.0.0.1'
+		),
 	);
 
 }

@@ -29,7 +29,7 @@ class MessageFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'to_id' => 1,
+			'to_id' => 2,
 			'from_id' => 1,
 			'created' => '2015-11-02 09:16:29',
 			'modified' => '2015-11-02 09:16:29'

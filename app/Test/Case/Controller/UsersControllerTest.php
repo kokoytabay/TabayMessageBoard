@@ -46,10 +46,7 @@ class UsersControllerTest extends ControllerTestCase {
 				'name' => 'John Doe',
 				'email' => 'john@testing.com',
 				'password' => 'testing',
-				'confirm_password' => 'testing',
-				'last_login_time' => '2015-11-17 10:00:00',
-				'created_ip' => '127.0.0.1',
-				'modified_ip' => '127.0.0.1'
+				'confirm_password' => 'testing'
 			)
 		);
 		$this->testAction(
@@ -78,14 +75,5 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testThanks() {
 		$this->testAction('/users/thanks');
 	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	/*public function testDelete() {
-		$this->markTestIncomplete('testDelete not implemented.');
-	}*/
 
 }

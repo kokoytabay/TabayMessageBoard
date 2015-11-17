@@ -23,7 +23,7 @@ class MessagesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndex() {
-		$this->markTestIncomplete('testIndex not implemented.');
+		$this->testAction('/messages');
 	}
 
 /**
@@ -32,7 +32,7 @@ class MessagesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testView() {
-		$this->markTestIncomplete('testView not implemented.');
+		$this->testAction('/messages/view/1');
 	}
 
 /**
@@ -41,7 +41,20 @@ class MessagesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testAdd() {
-		$this->markTestIncomplete('testAdd not implemented.');
+		$data = array(
+			'Message' => array(
+				'to_id' => 2,
+				'content' => 'Sample content'
+			)
+		);
+		$this->testAction(
+			'/messages/add',
+			array(
+				'data' => $data,
+				'method' => 'post'
+			)
+		);
+		$this->assertContains('/messages', $this->headers['Location']);
 	}
 
 /**
@@ -49,17 +62,8 @@ class MessagesControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testEdit() {
+	/*public function testEdit() {
 		$this->markTestIncomplete('testEdit not implemented.');
-	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	public function testDelete() {
-		$this->markTestIncomplete('testDelete not implemented.');
-	}
+	}*/
 
 }
