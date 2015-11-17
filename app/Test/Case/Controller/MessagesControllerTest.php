@@ -40,22 +40,9 @@ class MessagesControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testAdd() {
-		$data = array(
-			'Message' => array(
-				'to_id' => 2,
-				'content' => 'Sample content'
-			)
-		);
-		$this->testAction(
-			'/messages/add',
-			array(
-				'data' => $data,
-				'method' => 'post'
-			)
-		);
-		$this->assertContains('/messages', $this->headers['Location']);
-	}
+	/*public function testAdd() {
+		$this->markTestIncomplete('testAdd not implemented.');
+	}*/
 
 /**
  * testEdit method
