@@ -38,18 +38,18 @@ class UserFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'email' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Jack Testing',
+			'email' => 'test@testing.com',
 			'password' => 'Lorem ipsum dolor sit amet',
-			'image' => 'Lorem ipsum dolor sit amet',
-			'gender' => 'Lorem ipsum dolor sit ame',
-			'birthdate' => '2015-10-29',
+			'image' => '',
+			'gender' => '',
+			'birthdate' => '1980-10-29',
 			'hobby' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'last_login_time' => '2015-10-29 04:59:26',
 			'created' => '2015-10-29 04:59:26',
 			'modified' => '2015-10-29 04:59:26',
-			'created_ip' => 'Lorem ipsum dolor ',
-			'modified_ip' => 'Lorem ipsum dolor '
+			'created_ip' => '127.0.0.1',
+			'modified_ip' => '127.0.0.1'
 		),
 	);
 

@@ -12,7 +12,9 @@ class UsersControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.user'
+		'app.user',
+		'app.message',
+		'app.message_content'
 	);
 
 /**
@@ -20,9 +22,9 @@ class UsersControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testIndex() {
+	/*public function testIndex() {
 		$this->markTestIncomplete('testIndex not implemented.');
-	}
+	}*/
 
 /**
  * testView method
@@ -30,7 +32,7 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testView() {
-		$this->markTestIncomplete('testView not implemented.');
+		$this->testAction('/users/view/1');
 	}
 
 /**
@@ -39,7 +41,25 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testAdd() {
-		$this->markTestIncomplete('testAdd not implemented.');
+		$data = array(
+			'User' => array(
+				'name' => 'John Doe',
+				'email' => 'john@testing.com',
+				'password' => 'testing',
+				'confirm_password' => 'testing',
+				'last_login_time' => '2015-11-17 10:00:00',
+				'created_ip' => '127.0.0.1',
+				'modified_ip' => '127.0.0.1'
+			)
+		);
+		$this->testAction(
+			'/users/add',
+			array(
+				'data' => $data,
+				'method' => 'post'
+			)
+		);
+		$this->assertContains('/users/thanks', $this->headers['Location']);
 	}
 
 /**
@@ -48,7 +68,15 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testEdit() {
-		$this->markTestIncomplete('testEdit not implemented.');
+		$this->testAction('/users/edit/1');
+	}
+
+	public function testChangepassword() {
+		$this->testAction('/users/changepassword/1');
+	}
+
+	public function testThanks() {
+		$this->testAction('/users/thanks');
 	}
 
 /**
@@ -56,8 +84,8 @@ class UsersControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testDelete() {
+	/*public function testDelete() {
 		$this->markTestIncomplete('testDelete not implemented.');
-	}
+	}*/
 
 }
