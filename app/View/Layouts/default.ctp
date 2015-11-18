@@ -10,10 +10,10 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+		echo $this->fetch('css');
 		echo $this->Html->css('style');
 
 		echo $this->fetch('meta');
-		echo $this->fetch('css');
 	?>
 </head>
 <body>
