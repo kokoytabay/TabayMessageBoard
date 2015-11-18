@@ -31,7 +31,7 @@ class UsersControllerTest extends ControllerTestCase {
  *
  * @return void
  */
-	public function testView() {
+	public function oooView() {
 		$this->testAction('/users/view/100');
 	}
 
