@@ -24,6 +24,7 @@ class MessagesControllerTest extends ControllerTestCase {
  */
 	public function testIndex() {
 		$this->testAction('/messages');
+		//comment
 	}
 
 /**
