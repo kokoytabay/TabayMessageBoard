@@ -76,4 +76,7 @@ class UsersControllerTest extends ControllerTestCase {
 		$this->testAction('/users/thanks');
 	}
 
+	public function testSample() {
+		$this->testAction('/users/thanks');
+	}
 }
