@@ -75,8 +75,4 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testThanks() {
 		$this->testAction('/users/thanks');
 	}
-
-	public function testSample() {
-		$this->testAction('/users/thanks');
-	}
 }
