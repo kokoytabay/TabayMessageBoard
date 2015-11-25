@@ -32,7 +32,7 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testView() {
-		$this->testAction('/users/view/2');
+		$this->testAction('/users/view/1');
 	}
 
 /**
@@ -43,8 +43,8 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testAdd() {
 		$data = array(
 			'User' => array(
-				'name' => 'John Doe',
-				'email' => 'john@testing.com',
+				'name' => 'Good Morning',
+				'email' => 'goodmorning@testing.com',
 				'password' => 'test',
 				'confirm_password' => 'test'
 			)
