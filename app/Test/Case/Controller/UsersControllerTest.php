@@ -43,8 +43,8 @@ class UsersControllerTest extends ControllerTestCase {
 	public function testAdd() {
 		$data = array(
 			'User' => array(
-				'name' => 'Hello World',
-				'email' => 'hello@testing.com',
+				'name' => 'Hi World',
+				'email' => 'hi@testing.com',
 				'password' => 'test',
 				'confirm_password' => 'test'
 			)
